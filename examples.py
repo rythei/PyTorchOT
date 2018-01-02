@@ -63,4 +63,4 @@ def gaussian_example(batch_size = 100, reg = 10, dim = 10, filename = 'gaussian_
 
 if __name__ == '__main__':
     #uniform_example(filename='uniform_example2')
-    gaussian_example(reg = 100, dim = 600, filename='gaussian_example3')
+    gaussian_example(reg = 10000, dim = 700, filename='gaussian_example3')
