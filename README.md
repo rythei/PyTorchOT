@@ -9,5 +9,5 @@ from ot_pytorch import sink
 
 M = pairwise_distance_matrix()
 dist = sink(M, reg=5, cuda=False)
-'''
+```
 
