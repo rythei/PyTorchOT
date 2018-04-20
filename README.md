@@ -1,6 +1,6 @@
 # PyTorchOT
 
-This package implements sinkhorn ptimal transport algorithms in PyTorch. Currrently there are two versions of the Sinkhorn 
+This package implements sinkhorn optimal transport algorithms in PyTorch. Currrently there are two versions of the Sinkhorn 
 algorithm implemented: [the original](https://arxiv.org/pdf/1306.0895.pdf) and the [log-stabilized version](https://arxiv.org/pdf/1610.06519.pdf).
 
 Example usage:
