@@ -11,3 +11,11 @@ M = pairwise_distance_matrix()
 dist = sink(M, reg=5, cuda=False)
 ```
 
+The examples.py file contains two basic examples. 
+
+Example 1: 
+
+Let Z~i ~ Uniform[0,1], and define the data X~i = (0,Z~i), Y~i = (\theta, Z~i), for i=1,...,N and some parameters \theta which is varied over [-1,1]. The true optimal transport distance is |\theta|. The algorithm yields:
+
+![alt text](https://github.com/rythei/PyTorchOT/blob/master/plots/uniform_example/uniform_example2.png)
+
