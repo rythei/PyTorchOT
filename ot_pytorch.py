@@ -89,11 +89,9 @@ def sink_stabilized(M, reg, numItermax=1000, tau=1e2, stopThr=1e-9, warmstart=No
         u, v = Variable(torch.ones(na) / na), Variable(torch.ones(nb) / nb)
 
     def get_K(alpha, beta):
-        """log space computation"""
         return torch.exp(-(M - alpha.view((na, 1)) - beta.view((1, nb))) / reg)
 
     def get_Gamma(alpha, beta, u, v):
-        """log space gamma computation"""
         return torch.exp(-(M - alpha.view((na, 1)) - beta.view((1, nb))) / reg + torch.log(u.view((na, 1))) + torch.log(v.view((1, nb))))
 
     # print(np.min(K))
@@ -124,8 +122,6 @@ def sink_stabilized(M, reg, numItermax=1000, tau=1e2, stopThr=1e-9, warmstart=No
             K = get_K(alpha, beta)
 
         if cpt % print_period == 0:
-            # we can speed up the process by checking for the error only all
-            # the 10th iterations
             transp = get_Gamma(alpha, beta, u, v)
             err = (torch.sum(transp) - b).norm(1).pow(2).data[0]
 
