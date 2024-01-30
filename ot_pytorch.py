@@ -51,7 +51,7 @@ def sink(M, reg, numItermax=1000, stopThr=1e-9, cuda = True):
             # we can speed up the process by checking for the error only all
             # the 10th iterations
             transp = u.view(-1, 1) * (K * v)
-            err = (torch.sum(transp) - b).norm(1).pow(2).data[0]
+            err = (torch.sum(transp) - b).norm(1).pow(2).item()
 
 
         cpt += 1
@@ -111,7 +111,7 @@ def sink_stabilized(M, reg, numItermax=1000, tau=1e2, stopThr=1e-9, warmstart=No
         u = torch.div(a, (K.matmul(v) + 1e-16))
 
         # remove numerical problems and store them in K
-        if torch.max(torch.abs(u)).data[0] > tau or torch.max(torch.abs(v)).data[0] > tau:
+        if torch.max(torch.abs(u)).item() > tau or torch.max(torch.abs(v)).item() > tau:
             alpha, beta = alpha + reg * torch.log(u), beta + reg * torch.log(v)
 
             if cuda:
@@ -123,7 +123,7 @@ def sink_stabilized(M, reg, numItermax=1000, tau=1e2, stopThr=1e-9, warmstart=No
 
         if cpt % print_period == 0:
             transp = get_Gamma(alpha, beta, u, v)
-            err = (torch.sum(transp) - b).norm(1).pow(2).data[0]
+            err = (torch.sum(transp) - b).norm(1).pow(2).item()
 
         if err <= stopThr:
             loop = False
